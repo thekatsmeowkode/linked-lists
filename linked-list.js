@@ -28,12 +28,38 @@ const LinkedList = () => {
         if (head===null) {return null};
         return length}
 
-    const headRead = () => {
-        if (head === null) {return null}
+    const getHead = () => {
+        if (!head) {return null}
         return head.value
     }
-    
+    //lol
+    const getTail = () => {
+        let lastNode = head
+        if (lastNode) {
+            while (lastNode.nextNode) {
+                lastNode = lastNode.nextNode
+            }
+        }
+        return lastNode.value
+    }
+
+    const prepend = (value) => {
+        const newNode = Node(value)
+        if (head === null) {return head = newNode}
+        newNode.nextNode = head
+        head = newNode
+    }
+
+    const nodeAt = (index) => {
+        if (!head) return null
+        let pointer = head
+        for (let i=0; i<index; i++) {
+            pointer = pointer.nextNode
+        }
+        return pointer.value
+    }
+
     
 
-    return {append, size, headRead }
+    return {append, size, getHead, getTail, prepend, nodeAt}
 }
