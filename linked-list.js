@@ -62,7 +62,7 @@ const LinkedList = () => {
     const popOff = () => {
         if (!head) return null
         if (head === null) {return head = null}
-        at(size()-2).nextNode = null
+        nodeAt(size()-2).nextNode = null
         length--
     }
 
@@ -76,7 +76,28 @@ const LinkedList = () => {
         return (pointer.value === value)? true : false
     }
 
-    const 
+    const find = (value) => {
+        if (!head) return null
+        let pointer = head
+        let index = 0
+        while (pointer.nextNode != null) {
+            if (pointer.value === value) {return index}
+            pointer = pointer.nextNode
+            index++
+        }
+        return (pointer.value === value)? index : null
+    } 
 
-    return {append, size, getHead, getTail, prepend, nodeAt, popOff, containsValue}
+    const toString = () => {
+        if (!head) return null
+        let pointer = head
+        let string = ''
+        while (pointer.nextNode != null) {
+            string += `${pointer.value} -> `
+            pointer = pointer.nextNode
+        }
+        return string += pointer.value
+    }
+
+    return {append, size, getHead, getTail, prepend, nodeAt, popOff, containsValue, find, toString}
 }
