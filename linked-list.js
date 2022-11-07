@@ -59,7 +59,24 @@ const LinkedList = () => {
         return pointer.value
     }
 
-    
+    const popOff = () => {
+        if (!head) return null
+        if (head === null) {return head = null}
+        at(size()-2).nextNode = null
+        length--
+    }
 
-    return {append, size, getHead, getTail, prepend, nodeAt}
+    const containsValue = (value) => {
+        if (!head) return null
+        let pointer = head
+        while (pointer.nextNode != null) {
+            if (pointer.value === value) {return true}
+            pointer = pointer.nextNode
+        }
+        return (pointer.value === value)? true : false
+    }
+
+    const 
+
+    return {append, size, getHead, getTail, prepend, nodeAt, popOff, containsValue}
 }
